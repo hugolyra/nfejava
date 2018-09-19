@@ -44,8 +44,10 @@ public class LeitorDeXML {
 	public String VBC = "";
 	public String PICMS = "";
 	public String VICMS = "";
+	public String MODBCST = "";
+	public String VBCST = "";
+	public String PICMSST = "";
 	
-	//public String
 	
 	public String Retorno = "";
 	public String lerXML(File arquivo){
@@ -89,7 +91,10 @@ public class LeitorDeXML {
 		boolean controleVBC = false;
 		boolean controlePICMS = false;
 		boolean controleVICMS = false;
-		
+		boolean controleICSM10 = false;
+		boolean controleMODBCST = false;
+		boolean controleVBCST = false;
+		boolean controlePICMSST = false;
 		
 		public void startElement(String uri, String localName,String qName, 
 	                Attributes attributes) throws SAXException {
@@ -144,22 +149,27 @@ public class LeitorDeXML {
 				controleVBC = true;
 				controlePICMS = true;
 				controleVICMS = true;
+				controleICSM10 = true;
+				controleMODBCST = true;
+				controleVBCST = true;
+				controlePICMSST = true;
 			}
+			
 		}
 	 
 		public void endElement(String uri, String localName,
 			String qName) throws SAXException {
-	 
-			////System.out.println("End Element :" + qName);
-	 
 		}
+		
 		public void endDocument() {
-			//System.out.println("TESTE: "+CNPJEMITENTE);
-		Retorno =  gerarLayoutI9(CNPJEMITENTE,CNPJDESTINATARIO, MODELO, NUMERONF, SERIE, DATAHORAEMISSAO, DATAENTRADASAIDA, TIPONF, IDDESTINATARIO, TIPOEMISSAO, CODIGOPRODUTO, CODIGODEBARRAS, NOMEPRODUTO, NCM, CODIGOFISCAL, UNIDADECOMERCIAL, QUANTIDADECOMERCIAL, VALORUNITARIO, VALORTOTALPROD, CODIGODEBARRASTRIB, ORIGEM, CST, MODBC, VBC, PICMS, VICMS);	
+		Retorno =  gerarLayoutI9(CNPJEMITENTE,CNPJDESTINATARIO, MODELO, NUMERONF, SERIE, DATAHORAEMISSAO, 
+								 DATAENTRADASAIDA, TIPONF, IDDESTINATARIO, TIPOEMISSAO, CODIGOPRODUTO, 
+								 CODIGODEBARRAS, NOMEPRODUTO, NCM, CODIGOFISCAL, UNIDADECOMERCIAL, QUANTIDADECOMERCIAL, 
+								 VALORUNITARIO, VALORTOTALPROD, CODIGODEBARRASTRIB, ORIGEM, CST, MODBC, VBC, PICMS, 
+								 VICMS, MODBCST, VBCST, PICMSST);	
 		}
 
 		public void characters(char ch[], int start, int length) throws SAXException {
-
 			String texto = new String(ch, start, length); 
 			
 			if (controleCNPJ){
@@ -286,21 +296,66 @@ public class LeitorDeXML {
 							}
 						}
 					}
+					if(controleICSM10) {
+						if(controleOrigem || controleCST || controleMODBC || controleVBC || controlePICMS || controleVICMS || controleMODBCST || controleVBCST || controlePICMSST) {
+							if ((tagAtual.compareToIgnoreCase("orig") == 0)) {  
+								ORIGEM = texto;
+								controleOrigem = false;
+							}
+							if ((tagAtual.compareToIgnoreCase("CST") == 0)) {  
+								CST = texto;
+								controleCST = false;
+							}
+							if ((tagAtual.compareToIgnoreCase("modBC") == 0)) {  
+								MODBC = texto;
+								controleMODBC = false;
+							}
+							if ((tagAtual.compareToIgnoreCase("vBC") == 0)) {  
+								VBC = texto;
+								controleVBC = false;
+							}
+							if ((tagAtual.compareToIgnoreCase("pICMS") == 0)) {  
+								PICMS = texto;
+								controlePICMS = false;
+							}
+							if ((tagAtual.compareToIgnoreCase("vICMS") == 0)) {  
+								VICMS = texto;
+								controleVICMS = false;
+							}
+							if ((tagAtual.compareToIgnoreCase("modBCST") == 0)) {  
+								MODBCST = texto;
+								controleMODBCST = false;
+							}
+							if ((tagAtual.compareToIgnoreCase("vBCST") == 0)) {  
+								VBCST = texto;
+								controleVBCST = false;
+							}
+							if ((tagAtual.compareToIgnoreCase("pICMSST") == 0)) {  
+								PICMSST = texto;
+								controlePICMSST = false;
+							}
+						}
+					}
+					//another if here;
 				}
 			}
 		}
 	}
  };
-	       saxParser.parse(arquivo, handler);
+	     saxParser.parse(arquivo, handler);
 	 
-	     } catch (Exception e) {
-	       e.printStackTrace();
-	     }
+		     } catch (Exception e) {
+		       e.printStackTrace();
+	}
 		return Retorno;
-	 
-	   }
+}
 	   
-	private String gerarLayoutI9(String cNPJEMITENTE, String CNPJDESTINATARIO, String MODELO, String NUMERONF, String SERIE, String DATAHORAEMISSAO, String DATAENTRADASAIDA, String TIPONF, String IDDESTINATARIO, String TIPOEMISSAO, String CODIGOPRODUTO, String CODIGODEBARRAS, String NOMEPRODUTO, String NCM, String CODIGOFISCAL, String UNIDADECOMERCIAL, String QUANTIDADECOMERCIAL, String VALORUNITARIO, String VALORTOTALPROD, String CODIGODEBARRASTRIB, String ORIGEM, String CST, String MODBC, String VBC, String PICMS, String VICMS) {
+	private String gerarLayoutI9(String cNPJEMITENTE, String CNPJDESTINATARIO, String MODELO, String NUMERONF, String SERIE, String DATAHORAEMISSAO, 
+								 String DATAENTRADASAIDA, String TIPONF, String IDDESTINATARIO, String TIPOEMISSAO, String CODIGOPRODUTO, 
+								 String CODIGODEBARRAS, String NOMEPRODUTO, String NCM, String CODIGOFISCAL, String UNIDADECOMERCIAL, 
+								 String QUANTIDADECOMERCIAL, String VALORUNITARIO, String VALORTOTALPROD, String CODIGODEBARRASTRIB, 
+								 String ORIGEM, String CST, String MODBC, String VBC, String PICMS, String VICMS, String MODBCST, String VBCST, 
+								 String PICMSST) {
 	   
 	   //System.out.println("TESTE: "+cNPJEMITENTE);
 	   //SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); 
@@ -311,7 +366,7 @@ public class LeitorDeXML {
 	   //String isentas = "0,00";
 	  // System.out.println("VL ICMS: "+vLICMS);
 	   
-		System.out.println(cNPJEMITENTE);
+		/*System.out.println(cNPJEMITENTE);
 		System.out.println(CNPJDESTINATARIO);
 		System.out.println(MODELO);
 		System.out.println(SERIE);
@@ -336,7 +391,7 @@ public class LeitorDeXML {
 		System.out.println(MODBC);
 		System.out.println(VBC);
 		System.out.println(PICMS);
-		System.out.println(VICMS);
+		System.out.println(VICMS);*/
 		
 		return "";
 	}
