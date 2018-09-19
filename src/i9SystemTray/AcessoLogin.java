@@ -25,14 +25,14 @@ public class AcessoLogin {
 		ResultSet tabela = null;
 		String result = "";
 		ArrayList arrayUsuario = new ArrayList();
-		senha = 
+		senha = senha+"!@#$%chaveprivada!@#$%";
 		MessageDigest md5 = MessageDigest.getInstance("MD5");
 		md5.update(StandardCharsets.UTF_8.encode(senha));
 		senha =  String.format("%032x", new BigInteger(1, md5.digest()));
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = (Connection) DriverManager.getConnection("");
+			conn = (Connection) DriverManager.getConnection("jdbc:mysql://safe.acenecontabilidade.com.br:3306/i9\",\"maicon\",\"1q2w3e!Q@W#E");
 			consulta = (Statement) conn.createStatement();
 			tabela = consulta.executeQuery("SELECT id, usuarioCriptografado "
 					+ "						FROM 02_usuarios "
