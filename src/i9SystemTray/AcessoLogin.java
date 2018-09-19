@@ -25,14 +25,14 @@ public class AcessoLogin {
 		ResultSet tabela = null;
 		String result = "";
 		ArrayList arrayUsuario = new ArrayList();
-		senha = senha+"!@#$%chaveprivada!@#$%";
+		senha = 
 		MessageDigest md5 = MessageDigest.getInstance("MD5");
 		md5.update(StandardCharsets.UTF_8.encode(senha));
 		senha =  String.format("%032x", new BigInteger(1, md5.digest()));
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = (Connection) DriverManager.getConnection("jdbc:mysql://safe.acenecontabilidade.com.br:3306/i9","maicon","1q2w3e!Q@W#E");
+			conn = (Connection) DriverManager.getConnection("");
 			consulta = (Statement) conn.createStatement();
 			tabela = consulta.executeQuery("SELECT id, usuarioCriptografado "
 					+ "						FROM 02_usuarios "
@@ -40,13 +40,13 @@ public class AcessoLogin {
 							+ "				AND senha='"+senha+"'");
 
 			if(tabela.next()){
-				JOptionPane.showMessageDialog(null, "Usu·rio e senha corretos!"/*+tabela.getString("id")*/);
+				JOptionPane.showMessageDialog(null, "Usu√°rio e senha corretos!"/*+tabela.getString("id")*/);
 				 arrayUsuario.add(tabela.getString("id"));
 				 arrayUsuario.add(tabela.getString("usuarioCriptografado"));
 				 
 				 return arrayUsuario;
 			}else { 
-				JOptionPane.showMessageDialog(null, "Usu·rio e/ou senha incorretos!");
+				JOptionPane.showMessageDialog(null, "Usu√°rio e/ou senha incorretos!");
 				return arrayUsuario;
 			}
 			
