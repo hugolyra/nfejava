@@ -39,6 +39,11 @@ public class LeitorDeXML {
 	public String VALORTOTALPROD = "";
 	public String CODIGODEBARRASTRIB = "";
 	public String ORIGEM = "";
+	public String CST = "";
+	public String MODBC = "";
+	public String VBC = "";
+	public String PICMS = "";
+	public String VICMS = "";
 	
 	//public String
 	
@@ -79,6 +84,11 @@ public class LeitorDeXML {
 		boolean controleICMS = false;
 		boolean controleICSM00 = false;
 		boolean controleOrigem = false;
+		boolean controleCST = false;
+		boolean controleMODBC = false;
+		boolean controleVBC = false;
+		boolean controlePICMS = false;
+		boolean controleVICMS = false;
 		
 		
 		public void startElement(String uri, String localName,String qName, 
@@ -129,6 +139,11 @@ public class LeitorDeXML {
 				controleICMS = true;
 				controleICSM00 = true;
 				controleOrigem = true;
+				controleCST = true;
+				controleMODBC = true;
+				controleVBC = true;
+				controlePICMS = true;
+				controleVICMS = true;
 			}
 		}
 	 
@@ -140,7 +155,7 @@ public class LeitorDeXML {
 		}
 		public void endDocument() {
 			//System.out.println("TESTE: "+CNPJEMITENTE);
-		Retorno =  gerarLayoutI9(CNPJEMITENTE,CNPJDESTINATARIO, MODELO, NUMERONF, SERIE, DATAHORAEMISSAO, DATAENTRADASAIDA, TIPONF, IDDESTINATARIO, TIPOEMISSAO, CODIGOPRODUTO, CODIGODEBARRAS, NOMEPRODUTO, NCM, CODIGOFISCAL, UNIDADECOMERCIAL, QUANTIDADECOMERCIAL, VALORUNITARIO, VALORTOTALPROD, CODIGODEBARRASTRIB, ORIGEM);	
+		Retorno =  gerarLayoutI9(CNPJEMITENTE,CNPJDESTINATARIO, MODELO, NUMERONF, SERIE, DATAHORAEMISSAO, DATAENTRADASAIDA, TIPONF, IDDESTINATARIO, TIPOEMISSAO, CODIGOPRODUTO, CODIGODEBARRAS, NOMEPRODUTO, NCM, CODIGOFISCAL, UNIDADECOMERCIAL, QUANTIDADECOMERCIAL, VALORUNITARIO, VALORTOTALPROD, CODIGODEBARRASTRIB, ORIGEM, CST, MODBC, VBC, PICMS, VICMS);	
 		}
 
 		public void characters(char ch[], int start, int length) throws SAXException {
@@ -244,10 +259,30 @@ public class LeitorDeXML {
 			}if(controleImposto) {
 				if(controleICMS) {
 					if(controleICSM00) {
-						if(controleOrigem) {
+						if(controleOrigem || controleCST || controleMODBC || controleVBC || controlePICMS || controleVICMS) {
 							if ((tagAtual.compareToIgnoreCase("orig") == 0)) {  
 								ORIGEM = texto;
 								controleOrigem = false;
+							}
+							if ((tagAtual.compareToIgnoreCase("CST") == 0)) {  
+								CST = texto;
+								controleCST = false;
+							}
+							if ((tagAtual.compareToIgnoreCase("modBC") == 0)) {  
+								MODBC = texto;
+								controleMODBC = false;
+							}
+							if ((tagAtual.compareToIgnoreCase("vBC") == 0)) {  
+								VBC = texto;
+								controleVBC = false;
+							}
+							if ((tagAtual.compareToIgnoreCase("pICMS") == 0)) {  
+								PICMS = texto;
+								controlePICMS = false;
+							}
+							if ((tagAtual.compareToIgnoreCase("vICMS") == 0)) {  
+								VICMS = texto;
+								controleVICMS = false;
 							}
 						}
 					}
@@ -265,7 +300,7 @@ public class LeitorDeXML {
 	 
 	   }
 	   
-	private String gerarLayoutI9(String cNPJEMITENTE, String CNPJDESTINATARIO, String MODELO, String NUMERONF, String SERIE, String DATAHORAEMISSAO, String DATAENTRADASAIDA, String TIPONF, String IDDESTINATARIO, String TIPOEMISSAO, String CODIGOPRODUTO, String CODIGODEBARRAS, String NOMEPRODUTO, String NCM, String CODIGOFISCAL, String UNIDADECOMERCIAL, String QUANTIDADECOMERCIAL, String VALORUNITARIO, String VALORTOTALPROD, String CODIGODEBARRASTRIB, String ORIGEM) {
+	private String gerarLayoutI9(String cNPJEMITENTE, String CNPJDESTINATARIO, String MODELO, String NUMERONF, String SERIE, String DATAHORAEMISSAO, String DATAENTRADASAIDA, String TIPONF, String IDDESTINATARIO, String TIPOEMISSAO, String CODIGOPRODUTO, String CODIGODEBARRAS, String NOMEPRODUTO, String NCM, String CODIGOFISCAL, String UNIDADECOMERCIAL, String QUANTIDADECOMERCIAL, String VALORUNITARIO, String VALORTOTALPROD, String CODIGODEBARRASTRIB, String ORIGEM, String CST, String MODBC, String VBC, String PICMS, String VICMS) {
 	   
 	   //System.out.println("TESTE: "+cNPJEMITENTE);
 	   //SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); 
@@ -297,6 +332,11 @@ public class LeitorDeXML {
 		System.out.println(VALORTOTALPROD);
 		System.out.println(CODIGODEBARRASTRIB);
 		System.out.println(ORIGEM);
+		System.out.println(CST);
+		System.out.println(MODBC);
+		System.out.println(VBC);
+		System.out.println(PICMS);
+		System.out.println(VICMS);
 		
 		return "";
 	}
