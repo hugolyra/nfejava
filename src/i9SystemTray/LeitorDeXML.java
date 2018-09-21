@@ -53,10 +53,18 @@ public class LeitorDeXML {
 	public String PBCOP = "";
 	public String UFST = "";
 	public String VBCSTRET = "";
-	public String VICMSSTRED = "";
+	public String VICMSSTRET = "";
 	public String CSOSN = "";
 	public String PCREDSN = "";
 	public String VCREDICMSSN = "";
+	public String PIPI = "";
+	public String QUNID = "";
+	public String VUNID = "";
+	public String VIPI = "";
+	public String PPIS = "";
+	public String VPIS = "";
+	public String QBCPROD = "";
+	public String VALIQPROD = "";
 
 	
 	public String Retorno = "";
@@ -119,7 +127,7 @@ public class LeitorDeXML {
 		boolean controleUFST = false;
 		boolean controleICMSST = false;
 		boolean controleVBCSTRET = false;
-		boolean controleVICMSSTRED = false;
+		boolean controleVICMSSTRET = false;
 		boolean controleICMSSN101 = false;
 		boolean controleCSOSN = false;
 		boolean controlePCREDSN = false;
@@ -130,6 +138,25 @@ public class LeitorDeXML {
 		boolean controleICMSSN500 = false;
 		boolean controleICMSSN900 = false;
 		boolean controleIPI = false;
+		boolean controleIPITrib = false;
+		boolean controleIPIST = false;
+		boolean controlePIS = false;
+		boolean controlePISST = false;
+		boolean controleCOFINS = false;
+		boolean controleCOFINSST = false;
+		boolean controlePIPI = false;
+		boolean controleQUNID = false;
+		boolean controleVUNID = false;
+		boolean controleVIPI = false;
+		boolean controleIPINT = false;
+		boolean controlePISALIQ = false;
+		boolean controlePPIS = false;
+		boolean controleVPIS = false;
+		boolean controlePISQTDE = false;
+		boolean controleQBCPROD = false;
+		boolean controleVALIQPROD = false;
+		boolean controlePISNT = false;
+		boolean controlePISOUTR = false;
 		
 		public void startElement(String uri, String localName,String qName, 
 	                Attributes attributes) throws SAXException {
@@ -188,7 +215,42 @@ public class LeitorDeXML {
 				controleValorUnitario = true;
 				controleValorTotalProd = true;
 				controleCodigoDeBarrasTrib = true;
-				
+				/*controleImposto = true;
+				controleICMS = true;
+				controleICMS00 = true;
+				controleOrigem = true;
+				controleCST = true;
+				controleMODBC = true;
+				controleVBC = true;
+				controlePICMS = true;
+				controleVICMS = true;
+				controleICMS10 = true;
+				controleMODBCST = true;
+				controleVBCST = true;
+				controlePICMSST = true;
+				controleVICMSST = true;
+				controleICMS20 = true;
+				controleICMS30 = true;
+				controleICMS40 = true;
+				controleICMS51 = true;
+				controleVICMSOP = true;
+				controleICMS60 = true;
+				controleICMS70 = true;
+				controleICMS90 = true;
+				controleICMSPart = true;
+				controlePBCOP = true;
+				controleUFST = true;
+				controleICMSST = true;
+				controleVBCSTRET = true;
+				controleVICMSSTRET = true;
+				controleICMSSN101 = true;
+				controleCSOSN = true;
+				controlePCREDSN = true;
+				controleVCREDICMSSN = true;
+				controleICMSSN201 = true;
+				controleICMSSN202 = true;
+				controleICMSSN500 = true;
+				controleICMSSN900 = true;*/
 			}
 			if (qName.compareToIgnoreCase("imposto") == 0) { 
 				controleImposto = true;
@@ -218,7 +280,7 @@ public class LeitorDeXML {
 				controleUFST = true;
 				controleICMSST = true;
 				controleVBCSTRET = true;
-				controleVICMSSTRED = true;
+				controleVICMSSTRET = true;
 				controleICMSSN101 = true;
 				controleCSOSN = true;
 				controlePCREDSN = true;
@@ -227,8 +289,24 @@ public class LeitorDeXML {
 				controleICMSSN202 = true;
 				controleICMSSN500 = true;
 				controleICMSSN900 = true;
+				controleIPITrib = true;
+				controleIPIST = true;
+				controlePIS = true;
+				controlePISST = true;
+				controleCOFINS = true;
+				controleCOFINSST = true;
+				controlePIPI = true;
+				controleQUNID = true;
+				controleVUNID = true;
+				controleVIPI = true;
+				controlePISALIQ = true;
+				controlePPIS = true;
+				controleVPIS = true;
+				controleQBCPROD = true;
+				controleVALIQPROD = true;
+				controlePISNT = true;
+				controlePISOUTR = true;
 			}
-			
 		}
 	 
 		public void endElement(String uri, String localName,
@@ -240,8 +318,8 @@ public class LeitorDeXML {
 								 DATAENTRADASAIDA, TIPONF, IDDESTINATARIO, TIPOEMISSAO, CODIGOPRODUTO, 
 								 CODIGODEBARRAS, NOMEPRODUTO, NCM, CODIGOFISCAL, UNIDADECOMERCIAL, QUANTIDADECOMERCIAL, 
 								 VALORUNITARIO, VALORTOTALPROD, CODIGODEBARRASTRIB, ORIGEM, CST, MODBC, VBC, PICMS, 
-								 VICMS, MODBCST, VBCST, PICMSST, VICMSST, VICMSOP, PBCOP, UFST, VBCSTRET, VICMSSTRED, CSOSN, 
-								 PCREDSN, VCREDICMSSN);	
+								 VICMS, MODBCST, VBCST, PICMSST, VICMSST, VICMSOP, PBCOP, UFST, VBCSTRET, VICMSSTRET, CSOSN, 
+								 PCREDSN, VCREDICMSSN, PIPI, QUNID, VUNID, VIPI, PPIS, VPIS, QBCPROD, VALIQPROD);	
 		}
 
 		public void characters(char ch[], int start, int length) throws SAXException {
@@ -376,7 +454,7 @@ public class LeitorDeXML {
 							controleUFST = false;
 							controleICMSST = false;
 							controleVBCSTRET = false;
-							controleVICMSSTRED = false;
+							controleVICMSSTRET = false;
 							controleICMSSN101 = false;
 							controleCSOSN = false;
 							controlePCREDSN = false;
@@ -388,6 +466,7 @@ public class LeitorDeXML {
 							controleICMSSN900 = false;
 						}
 						if(controleImposto) {
+							
 							if(controleICMS) {
 								if(controleICMS00) {
 									if(controleOrigem || controleCST || controleMODBC || controleVBC || controlePICMS || controleVICMS) {
@@ -487,7 +566,7 @@ public class LeitorDeXML {
 								}
 							}
 							if(controleICMS30) {
-								if(controleOrigem || controleCST || controleMODBC || controleVBCST || controlePICMSST || controleVICMSST) {
+								if(controleOrigem || controleCST || controleMODBCST || controleVBCST || controlePICMSST || controleVICMSST) {
 									if ((tagAtual.compareToIgnoreCase("orig") == 0)) {  
 										ORIGEM = texto;
 										controleOrigem = false;
@@ -496,9 +575,9 @@ public class LeitorDeXML {
 										CST = texto;
 										controleCST = false;
 									}
-									if ((tagAtual.compareToIgnoreCase("modBC") == 0)) {  
-										MODBC = texto;
-										controleMODBC = false;
+									if ((tagAtual.compareToIgnoreCase("modBCST") == 0)) {  
+										MODBCST = texto;
+										controleMODBCST = false;
 									}
 									if ((tagAtual.compareToIgnoreCase("vBCST") == 0)) {  
 										VBCST = texto;
@@ -570,7 +649,7 @@ public class LeitorDeXML {
 								}
 							}
 							if(controleICMS70) {
-								if(controleOrigem || controleCST || controleMODBC || controleVBC || controlePICMS || controleVICMS || controleVBCST || controlePICMSST || controleVICMSST) {
+								if(controleOrigem || controleCST || controleMODBC || controleVBC || controlePICMS || controleVICMS || controleVBCST || controlePICMSST || controleVICMSST || controleMODBCST) {
 									if ((tagAtual.compareToIgnoreCase("orig") == 0)) {  
 										ORIGEM = texto;
 										controleOrigem = false;
@@ -606,6 +685,10 @@ public class LeitorDeXML {
 									if ((tagAtual.compareToIgnoreCase("vICMSST") == 0)) {  
 										VICMSST = texto;
 										controleVICMSST = false;
+									}
+									if ((tagAtual.compareToIgnoreCase("modBCST") == 0)) {  
+										MODBCST = texto;
+										controleMODBCST = false;
 									}
 								}
 							}
@@ -674,7 +757,7 @@ public class LeitorDeXML {
 							}				
 						}
 						if(controleICMSST) {
-							if(controleOrigem || controleCST || controleVBCSTRET || controleVICMSSTRED) {
+							if(controleOrigem || controleCST || controleVBCSTRET || controleVICMSSTRET) {
 								if ((tagAtual.compareToIgnoreCase("orig") == 0)) {  
 									ORIGEM = texto;
 									controleOrigem = false;
@@ -688,8 +771,8 @@ public class LeitorDeXML {
 									controleVBCSTRET = false;
 								}
 								if ((tagAtual.compareToIgnoreCase("vICMSSTRet") == 0)) {  
-									VICMSSTRED = texto;
-									controleVICMSSTRED = false;
+									VICMSSTRET = texto;
+									controleVICMSSTRET = false;
 								}
 							}
 						}
@@ -707,7 +790,7 @@ public class LeitorDeXML {
 									PCREDSN = texto;
 									controlePCREDSN = false;
 								}
-								if ((tagAtual.compareToIgnoreCase("vICMSSTRet") == 0)) {  
+								if ((tagAtual.compareToIgnoreCase("vCredICMSSN") == 0)) {  
 									VCREDICMSSN = texto;
 									controleVCREDICMSSN = false;
 								}
@@ -807,6 +890,131 @@ public class LeitorDeXML {
 						}
 					}
 				}
+							if(controleIPITrib) {
+								if(controleCST || controleVBC || controlePIPI || controleQUNID || controleVUNID || controleVIPI) {
+									if ((tagAtual.compareToIgnoreCase("CST") == 0)) {  
+										CST = texto;
+										controleCST = false;
+									}
+									if ((tagAtual.compareToIgnoreCase("vBC") == 0)) {  
+										VBC = texto;
+										controleVBC = false;
+									}
+									if ((tagAtual.compareToIgnoreCase("pIPI") == 0)) {  
+										PIPI = texto;
+										controlePIPI = false;
+									}
+									if ((tagAtual.compareToIgnoreCase("qUnid") == 0)) {  
+										QUNID = texto;
+										controleQUNID = false;
+									}
+									if ((tagAtual.compareToIgnoreCase("vUnid") == 0)) {  
+										VUNID = texto;
+										controleVUNID = false;
+									}
+									if ((tagAtual.compareToIgnoreCase("vIPI") == 0)) {  
+										VIPI = texto;
+										controleVIPI = false;
+									}
+								}
+							}
+							if(controleIPINT){
+								if(controleCST){
+									if ((tagAtual.compareToIgnoreCase("CST") == 0)) {  
+										CST = texto;
+										controleCST = false;
+									}
+								}
+							}
+							if(controlePIS){
+								if(controlePISALIQ) {
+									if(controleCST || controleVBC || controlePPIS || controleVPIS){
+										if ((tagAtual.compareToIgnoreCase("CST") == 0)) {  
+											CST = texto;
+											controleCST = false;
+										}
+										if ((tagAtual.compareToIgnoreCase("vBC") == 0)) {  
+											VBC = texto;
+											controleVBC = false;
+										}
+										if ((tagAtual.compareToIgnoreCase("pPIS") == 0)) {  
+											PPIS = texto;
+											controlePPIS = false;
+										}
+										if ((tagAtual.compareToIgnoreCase("vPIS") == 0)) {  
+											VPIS = texto;
+											controleVPIS = false;
+										}
+									}
+								}
+								if(controlePISQTDE) {
+									if(controleCST || controleQBCPROD || controleVALIQPROD || controleVPIS){
+										if ((tagAtual.compareToIgnoreCase("CST") == 0)) {  
+											CST = texto;
+											controleCST = false;
+										}
+										if ((tagAtual.compareToIgnoreCase("qBCProd") == 0)) {  
+											QBCPROD = texto;
+											controleQBCPROD = false;
+										}
+										if ((tagAtual.compareToIgnoreCase("vAliqProd") == 0)) {  
+											VALIQPROD = texto;
+											controleVALIQPROD = false;
+										}
+										if ((tagAtual.compareToIgnoreCase("vPIS") == 0)) {  
+											VPIS = texto;
+											controleVPIS = false;
+										}
+									}
+								}
+								if(controlePISNT){
+									if(controleCST){
+										if ((tagAtual.compareToIgnoreCase("CST") == 0)) {  
+											CST = texto;
+											controleCST = false;
+										}
+									}
+								}
+								if(controlePISOUTR){
+									if(controleCST || controleVBC || controlePPIS || controleQBCPROD || controleVALIQPROD || controleVPIS){
+										if ((tagAtual.compareToIgnoreCase("CST") == 0)) {  
+											CST = texto;
+											controleCST = false;
+										}
+										if ((tagAtual.compareToIgnoreCase("vBC") == 0)) {  
+											VBC = texto;
+											controleVBC = false;
+										}
+										if ((tagAtual.compareToIgnoreCase("pPIS") == 0)) {  
+											PPIS = texto;
+											controlePPIS = false;
+										}
+										if ((tagAtual.compareToIgnoreCase("qBCProd") == 0)) {  
+											QBCPROD = texto;
+											controleQBCPROD = false;
+										}
+										if ((tagAtual.compareToIgnoreCase("vAliqProd") == 0)) {  
+											VALIQPROD = texto;
+											controleVALIQPROD = false;
+										}
+										if ((tagAtual.compareToIgnoreCase("vAliqProd") == 0)) {  
+											VPIS = texto;
+											controleVPIS = false;
+										}
+									}
+								}
+							}
+
+							//pis 
+							
+							
+							//pis st
+							
+							
+							//cofins
+							
+							
+							//cofins st
 			}
 		}
 	}
@@ -824,14 +1032,15 @@ public class LeitorDeXML {
 								 String CODIGODEBARRAS, String NOMEPRODUTO, String NCM, String CODIGOFISCAL, String UNIDADECOMERCIAL, 
 								 String QUANTIDADECOMERCIAL, String VALORUNITARIO, String VALORTOTALPROD, String CODIGODEBARRASTRIB, 
 								 String ORIGEM, String CST, String MODBC, String VBC, String PICMS, String VICMS, String MODBCST, String VBCST, 
-								 String PICMSST, String VICMSST, String VICMSOP, String PBCOP, String UFST, String VBCSTRET, String VICMSSTRED,
-								 String CSOSN, String PCREDSN, String VCREDICMSSN) {
+								 String PICMSST, String VICMSST, String VICMSOP, String PBCOP, String UFST, String VBCSTRET, String VICMSSTRET,
+								 String CSOSN, String PCREDSN, String VCREDICMSSN, String PIPI, String QUNID, String VUNID, String VIPI, String PPIS,
+								 String VPIS, String QBCPROD, String VALIQPROD) {
 	   
 	   //System.out.println("TESTE: "+cNPJEMITENTE);
-	   //SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); 
-	   //String dataEmissaoCon[] = DATAHORAEMISSAO.split("T");
+	   SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); 
+	   String dataEmissaoCon[] = DATAHORAEMISSAO.split("T");
 	   
-	   //String dataEmissaoFormat = dataEmissaoCon[0].substring(8,10)+"/"+dataEmissaoCon[0].substring(5,7)+"/"+dataEmissaoCon[0].substring(0,4);
+	   String dataEmissaoFormat = dataEmissaoCon[0].substring(8,10)+"/"+dataEmissaoCon[0].substring(5,7)+"/"+dataEmissaoCon[0].substring(0,4);
 	   //System.out.println(sdf.format(new Date())); 
 	   //String isentas = "0,00";
 	  // System.out.println("VL ICMS: "+vLICMS);
@@ -870,7 +1079,7 @@ public class LeitorDeXML {
 		System.out.println(PBCOP);
 		System.out.println(UFST);
 		System.out.println(VBCSTRET);
-		System.out.println(VICMSSTRED);
+		System.out.println(VICMSSTRET);
 		System.out.println(CSOSN);
 		System.out.println(PCREDSN);
 		System.out.println(VCREDICMSSN);
