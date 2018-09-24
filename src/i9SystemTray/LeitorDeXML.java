@@ -1004,11 +1004,31 @@ public class LeitorDeXML {
 									}
 								}
 							}
-
-							//pis 
+							if(controlePISST) {
+								if(controleVBC || controlePPIS || controleQBCPROD || controleVALIQPROD || controleVPIS) {
+									if ((tagAtual.compareToIgnoreCase("vBC") == 0)) {  
+										VBC = texto;
+										controleVBC = false;
+									}
+									if ((tagAtual.compareToIgnoreCase("pPIS") == 0)) {  
+										PPIS = texto;
+										controlePPIS = false;
+									}
+									if ((tagAtual.compareToIgnoreCase("qBCProd") == 0)) {  
+										QBCPROD = texto;
+										controleQBCPROD = false;
+									}
+									if ((tagAtual.compareToIgnoreCase("vAliqProd") == 0)) {  
+										VALIQPROD = texto;
+										controleVALIQPROD = false;
+									}
+									if ((tagAtual.compareToIgnoreCase("vAliqProd") == 0)) {  
+										VPIS = texto;
+										controleVPIS = false;
+									}
+								}
+							}
 							
-							
-							//pis st
 							
 							
 							//cofins
