@@ -65,6 +65,8 @@ public class LeitorDeXML {
 	public String VPIS = "";
 	public String QBCPROD = "";
 	public String VALIQPROD = "";
+	public String PCOFINS = "";
+	public String VCOFINS = "";
 
 	
 	public String Retorno = "";
@@ -157,6 +159,12 @@ public class LeitorDeXML {
 		boolean controleVALIQPROD = false;
 		boolean controlePISNT = false;
 		boolean controlePISOUTR = false;
+		boolean controleCOFINSALIQ = false;
+		boolean controlePCOFINS = false;
+		boolean controleVCOFINS = false;
+		boolean controleCOFINSQTDE = false;
+		boolean controleCOFINSNT = false;
+		boolean controleCOFINSOUTR = false;
 		
 		public void startElement(String uri, String localName,String qName, 
 	                Attributes attributes) throws SAXException {
@@ -306,6 +314,11 @@ public class LeitorDeXML {
 				controleVALIQPROD = true;
 				controlePISNT = true;
 				controlePISOUTR = true;
+				controleCOFINSALIQ = true;
+				controlePCOFINS = true;
+				controleCOFINSQTDE = true;
+				controleCOFINSNT = true;
+				controleCOFINSOUTR = true;
 			}
 		}
 	 
@@ -319,7 +332,7 @@ public class LeitorDeXML {
 								 CODIGODEBARRAS, NOMEPRODUTO, NCM, CODIGOFISCAL, UNIDADECOMERCIAL, QUANTIDADECOMERCIAL, 
 								 VALORUNITARIO, VALORTOTALPROD, CODIGODEBARRASTRIB, ORIGEM, CST, MODBC, VBC, PICMS, 
 								 VICMS, MODBCST, VBCST, PICMSST, VICMSST, VICMSOP, PBCOP, UFST, VBCSTRET, VICMSSTRET, CSOSN, 
-								 PCREDSN, VCREDICMSSN, PIPI, QUNID, VUNID, VIPI, PPIS, VPIS, QBCPROD, VALIQPROD);	
+								 PCREDSN, VCREDICMSSN, PIPI, QUNID, VUNID, VIPI, PPIS, VPIS, QBCPROD, VALIQPROD, PCOFINS, VCOFINS);	
 		}
 
 		public void characters(char ch[], int start, int length) throws SAXException {
@@ -1028,13 +1041,78 @@ public class LeitorDeXML {
 									}
 								}
 							}
-							
-							
-							
-							//cofins
-							
-							
-							//cofins st
+							if(controleCOFINS){
+								if(controleCOFINSALIQ) {
+									if(controleCST || controleVBC || controlePCOFINS || controleVCOFINS){
+										if ((tagAtual.compareToIgnoreCase("CST") == 0)) {  
+											CST = texto;
+											controleCST = false;
+										}
+										if ((tagAtual.compareToIgnoreCase("vBC") == 0)) {  
+											VBC = texto;
+											controleVBC = false;
+										}
+										if ((tagAtual.compareToIgnoreCase("pCOFINS") == 0)) {  
+											PCOFINS = texto;
+											controlePCOFINS = false;
+										}
+										if ((tagAtual.compareToIgnoreCase("vCOFINS") == 0)) {  
+											VCOFINS = texto;
+											controleVCOFINS = false;
+										}
+									}
+								}
+								if(controleCOFINS){
+									if(controleCOFINSQTDE) {
+										if(controleCST || controleQBCPROD || controleVALIQPROD || controleVCOFINS){
+											if ((tagAtual.compareToIgnoreCase("CST") == 0)) {  
+												CST = texto;
+												controleCST = false;
+											}
+											if ((tagAtual.compareToIgnoreCase("qBCProd") == 0)) {  
+												QBCPROD = texto;
+												controleQBCPROD = false;
+											}
+											if ((tagAtual.compareToIgnoreCase("vAliqProd") == 0)) {  
+												VALIQPROD = texto;
+												controleVALIQPROD = false;
+											}
+											if ((tagAtual.compareToIgnoreCase("vCOFINS") == 0)) {  
+												VCOFINS = texto;
+												controleVCOFINS = false;
+											}
+										}
+									}
+									if(controleCOFINSNT){
+										if(controleCST){
+											if ((tagAtual.compareToIgnoreCase("CST") == 0)) {  
+												CST = texto;
+												controleCST = false;
+											}
+										}
+									}
+									if(controleCOFINSOUTR){
+										if(controleCST || controleQBCPROD || controleVALIQPROD || controleVCOFINS){
+											if ((tagAtual.compareToIgnoreCase("CST") == 0)) {  
+												CST = texto;
+												controleCST = false;
+											}
+											if ((tagAtual.compareToIgnoreCase("qBCProd") == 0)) {  
+												QBCPROD = texto;
+												controleQBCPROD = false;
+											}
+											if ((tagAtual.compareToIgnoreCase("vAliqProd") == 0)) {  
+												VALIQPROD = texto;
+												controleVALIQPROD = false;
+											}
+											if ((tagAtual.compareToIgnoreCase("vCOFINS") == 0)) {  
+												VCOFINS = texto;
+												controleVCOFINS = false;
+											}
+										}
+									}
+					}		
+				}			
 			}
 		}
 	}
@@ -1054,7 +1132,7 @@ public class LeitorDeXML {
 								 String ORIGEM, String CST, String MODBC, String VBC, String PICMS, String VICMS, String MODBCST, String VBCST, 
 								 String PICMSST, String VICMSST, String VICMSOP, String PBCOP, String UFST, String VBCSTRET, String VICMSSTRET,
 								 String CSOSN, String PCREDSN, String VCREDICMSSN, String PIPI, String QUNID, String VUNID, String VIPI, String PPIS,
-								 String VPIS, String QBCPROD, String VALIQPROD) {
+								 String VPIS, String QBCPROD, String VALIQPROD, String PCOFINS, String VCOFINS) {
 	   
 	   //System.out.println("TESTE: "+cNPJEMITENTE);
 	   SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); 
