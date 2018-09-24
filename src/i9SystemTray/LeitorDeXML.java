@@ -141,7 +141,6 @@ public class LeitorDeXML {
 		boolean controleICMSSN900 = false;
 		boolean controleIPI = false;
 		boolean controleIPITrib = false;
-		boolean controleIPIST = false;
 		boolean controlePIS = false;
 		boolean controlePISST = false;
 		boolean controleCOFINS = false;
@@ -298,7 +297,6 @@ public class LeitorDeXML {
 				controleICMSSN500 = true;
 				controleICMSSN900 = true;
 				controleIPITrib = true;
-				controleIPIST = true;
 				controlePIS = true;
 				controlePISST = true;
 				controleCOFINS = true;
@@ -1108,6 +1106,26 @@ public class LeitorDeXML {
 											if ((tagAtual.compareToIgnoreCase("vCOFINS") == 0)) {  
 												VCOFINS = texto;
 												controleVCOFINS = false;
+											}
+										}
+									}
+									if(controleCOFINSST){
+										if(controleVBC || controlePCOFINS || controleQBCPROD || controleVALIQPROD){
+											if ((tagAtual.compareToIgnoreCase("vBC") == 0)) {  
+												VBC = texto;
+												controleVBC = false;
+											}
+											if ((tagAtual.compareToIgnoreCase("pCOFINS") == 0)) {  
+												PCOFINS = texto;
+												controlePCOFINS = false;
+											}
+											if ((tagAtual.compareToIgnoreCase("qBCProd") == 0)) {  
+												QBCPROD = texto;
+												controleQBCPROD = false;
+											}
+											if ((tagAtual.compareToIgnoreCase("vAliqProd") == 0)) {  
+												VALIQPROD = texto;
+												controleVALIQPROD = false;
 											}
 										}
 									}
