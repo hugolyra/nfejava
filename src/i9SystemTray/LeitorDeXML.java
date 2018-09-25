@@ -432,15 +432,31 @@ public class LeitorDeXML {
 								}
 							}
 						}
-						if (controleIPI) {
+						if (controleCOFINS) {
+							controleIde = false;
+							controleModelo = false;
+							controleSerie = false;
+							controleNumeroNF = false;
+							controleDataHoraEmissao = false;
+							controleDataHoraEntradaSaida = false;
+							controleTipoNF = false;
+							controleIdDestinatario = false;
+							controleTipoEmissao = false;
+							controleDetnItem = false;
+							controleProd = false;
+							controleCodigoProduto = false;
+							controleCodigoDeBarras = false;
+							controleNomeProduto = false;
+							controleNCM = false;
+							controleCodigoFiscal = false;
+							controleUnidadeComercial = false;
+							controleQuantidadeComercial = false;
+							controleValorUnitario = false;
+							controleValorTotalProd = false;
+							controleCodigoDeBarrasTrib = false;
+							controleImposto = false;
 							controleICMS = false;
 							controleICMS00 = false;
-							controleOrigem = false;
-							controleCST = false;
-							controleMODBC = false;
-							controleVBC = false;
-							controlePICMS = false;
-							controleVICMS = false;
 							controleOrigem = false;
 							controleCST = false;
 							controleMODBC = false;
@@ -475,6 +491,31 @@ public class LeitorDeXML {
 							controleICMSSN202 = false;
 							controleICMSSN500 = false;
 							controleICMSSN900 = false;
+							controleIPI = false;
+							controleIPITrib = false;
+							controlePIS = false;
+							controlePISST = false;
+							controleCOFINS = false;
+							controleCOFINSST = false;
+							controlePIPI = false;
+							controleQUNID = false;
+							controleVUNID = false;
+							controleVIPI = false;
+							controleIPINT = false;
+							controlePISALIQ = false;
+							controlePPIS = false;
+							controleVPIS = false;
+							controlePISQTDE = false;
+							controleQBCPROD = false;
+							controleVALIQPROD = false;
+							controlePISNT = false;
+							controlePISOUTR = false;
+							controleCOFINSALIQ = false;
+							controlePCOFINS = false;
+							controleVCOFINS = false;
+							controleCOFINSQTDE = false;
+							controleCOFINSNT = false;
+							controleCOFINSOUTR = false;
 						}
 						if(controleImposto) {
 							
@@ -1153,10 +1194,10 @@ public class LeitorDeXML {
 								 String VPIS, String QBCPROD, String VALIQPROD, String PCOFINS, String VCOFINS) {
 	   
 	   //System.out.println("TESTE: "+cNPJEMITENTE);
-	   SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); 
-	   String dataEmissaoCon[] = DATAHORAEMISSAO.split("T");
+	   //SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); 
+	   //String dataEmissaoCon[] = DATAHORAEMISSAO.split("T");
 	   
-	   String dataEmissaoFormat = dataEmissaoCon[0].substring(8,10)+"/"+dataEmissaoCon[0].substring(5,7)+"/"+dataEmissaoCon[0].substring(0,4);
+	   //String dataEmissaoFormat = dataEmissaoCon[0].substring(8,10)+"/"+dataEmissaoCon[0].substring(5,7)+"/"+dataEmissaoCon[0].substring(0,4);
 	   //System.out.println(sdf.format(new Date())); 
 	   //String isentas = "0,00";
 	  // System.out.println("VL ICMS: "+vLICMS);
@@ -1199,8 +1240,18 @@ public class LeitorDeXML {
 		System.out.println(CSOSN);
 		System.out.println(PCREDSN);
 		System.out.println(VCREDICMSSN);
+		System.out.println(PIPI);
+		System.out.println(QUNID);
+		System.out.println(VUNID);
+		System.out.println(VIPI);
+		System.out.println(PPIS);
+		System.out.println(VPIS);
+		System.out.println(QBCPROD);
+		System.out.println(VALIQPROD);
+		System.out.println(PCOFINS);
+		System.out.println(VCOFINS);
 		
-		
+
 		
 		return "";
 	}
